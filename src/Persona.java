@@ -55,11 +55,12 @@ public class Persona {
 	/*
 	 * CONSTRUCTORES
 	 */
-	
+	//Constructor por defecto
 	public Persona() {
 		
 	}
 	
+	//Contstructor con todos  los atributos
 	public Persona(String nombre, int edad, String dni, String sexo, double peso, double altura) {
 		this.nombre = nombre;
 		this.edad = edad;
@@ -78,33 +79,56 @@ public class Persona {
 		public static final int PESO_IDEAL = 0;
 		public static final int SOBREPESO = 1;
 		
-		public static int calcularIMC(double peso, double altura) {
-			int estado;
-			int imc;
+	// metodo para calcular el imc de una persona
+		public static int calcularIMC(Persona p) {
+			double IMC, peso = p.getPeso(), altura = p.getAltura();
+			int numero;
+			IMC = peso/(Math.pow(altura, 2));
 			
-			imc = (int) (peso/(altura * altura));
-			
-			if(imc < 20 ) {
-				estado = INFRAPESO;
-			}else if(imc >= 20 && imc <= 25) {
-				estado = PESO_IDEAL;
+			if(IMC > 20 && IMC < 25 ) {
+				numero = PESO_IDEAL;
+			}else if(IMC < 20 ) {
+				numero = INFRAPESO;
 			}else {
-				estado = SOBREPESO;
+				numero = SOBREPESO;
 			}
-			return imc;
+			
+			return numero;
+					
+		}
+		
+		
+		//metodo para comprobar si la persona es mayor de edad
+		public static boolean esMayorDeEdad(Persona p) {
+			
+			boolean mayor;
+			
+			if(p.getEdad() > 18) {
+				mayor = true;
+			}else {
+				mayor = false;
+			}
+			
+			return mayor;
+			
 			
 		}
 		
-		public static boolean mayorDeEdad(int edad) {
-			
-			boolean esMayor = false;
-			
-			if(edad < 18) {
-				esMayor = false;
-			}else {
-				esMayor = true;
-			}
-			
-			return esMayor;
+		public String toString() {
+	        String sexo;
+	        if (this.sexo.charAt(0) == 'H' && this.sexo.charAt(0) == 'h' ) {
+	            sexo = "mujer";
+	        } else {
+	            sexo = "hombre";
+	        }
+	        return "Informacion de la persona:\n"
+	                + "Nombre: " + nombre + "\n"
+	                + "Sexo: " + sexo + "\n"
+	                + "Edad: " + edad + " años\n"
+	                + "DNI: " + dni + "\n"
+	                + "Peso: " + peso + " kg\n"
+	                + "Altura: " + altura + " metros\n";
+
 		}
+		
 }
