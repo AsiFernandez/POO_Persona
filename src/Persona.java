@@ -7,7 +7,7 @@ public class Persona {
 	private String nombre;
 	private int edad;
 	private String dni;
-	private String sexo;
+	private char sexo;
 	private double peso;
 	private double altura;
 	
@@ -32,10 +32,10 @@ public class Persona {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	public String getSexo() {
+	public char getSexo() {
 		return sexo;
 	}
-	public void setSexo(String sexo) {
+	public void setSexo(char sexo) {
 		this.sexo = sexo;
 	}
 	public double getPeso() {
@@ -61,7 +61,7 @@ public class Persona {
 	}
 	
 	//Contstructor con todos  los atributos
-	public Persona(String nombre, int edad, String dni, String sexo, double peso, double altura) {
+	public Persona(String nombre, int edad, String dni, char sexo, double peso, double altura) {
 		this.nombre = nombre;
 		this.edad = edad;
 		this.dni = dni;
@@ -78,11 +78,13 @@ public class Persona {
 		public static final int INFRAPESO = -1;
 		public static final int PESO_IDEAL = 0;
 		public static final int SOBREPESO = 1;
+		public static final char SEXO_DEF = 'H';
 		
 	// metodo para calcular el imc de una persona
 		public static int calcularIMC(Persona p) {
 			double IMC, peso = p.getPeso(), altura = p.getAltura();
 			int numero;
+			
 			IMC = peso/(Math.pow(altura, 2));
 			
 			if(IMC > 20 && IMC < 25 ) {
@@ -114,12 +116,13 @@ public class Persona {
 			
 		}
 		
+		@Override
 		public String toString() {
 	        String sexo;
-	        if (this.sexo.charAt(0) == 'H' && this.sexo.charAt(0) == 'h' ) {
-	            sexo = "mujer";
+	        if (this.sexo == 'h'  ) {
+	            sexo = "Hombre";
 	        } else {
-	            sexo = "hombre";
+	            sexo = "Mujer";
 	        }
 	        return "Informacion de la persona:\n"
 	                + "Nombre: " + nombre + "\n"

@@ -5,7 +5,8 @@ public class PersonaMain {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		String nombre, sexo, dni;
+		String nombre, dni;
+		char sexo;
 		int edad;
 		double peso, altura;
 		
@@ -19,7 +20,7 @@ public class PersonaMain {
 		edad = scan.nextInt();
 		System.out.println("Introduce el sexo");
 		scan.nextLine();
-		sexo = scan.nextLine();
+		sexo = scan.nextLine().toLowerCase().charAt(0);
 		System.out.println("Introduce la altura");
 		altura = scan.nextDouble();
 		System.out.println("Introduce el peso");
@@ -30,15 +31,15 @@ public class PersonaMain {
 		// Fin pedir datos de la persona
 		
 		//Creamos una persona pasandole los parametros al crear la persona
-		Persona p1 = new Persona(nombre, edad, sexo, dni, peso, altura);
+		Persona p1 = new Persona(nombre, edad, dni, sexo, peso, altura);
 		
 		//Creamos una persona y le damos los datos con el metodo set
 		Persona p2 = new Persona();
 		p2.setNombre("Joni");
 		p2.setEdad(21);
-		p2.setSexo("hombre");
+		p2.setSexo('M');
 		p2.setAltura(1.90);
-		p2.setPeso(78);
+		p2.setPeso(30);
 		p2.setDni("69847353H");
 	
 		System.out.println("----- PERSONA 1-----");
